@@ -29,7 +29,7 @@ export default function HomePage() {
             priority
           />
           <h1 className="mt-4 font-serif text-5xl font-black tracking-tight text-[var(--ink)] sm:text-6xl md:text-7xl">
-            Course OS
+            Scaffold OS
           </h1>
           <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-secondary)]">
             The modular learning gazette
@@ -55,10 +55,16 @@ export default function HomePage() {
                 Compose a course
               </Link>
               <Link
-                href="/courses"
+                href="/portal"
                 className="inline-flex h-9 items-center border border-[var(--ink)] px-4 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--ink)] hover:bg-black/[0.04]"
               >
-                Open the catalog
+                Open role portals
+              </Link>
+              <Link
+                href="/school"
+                className="inline-flex h-9 items-center border border-[var(--ink)] px-4 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--ink)] hover:bg-black/[0.04]"
+              >
+                School desk
               </Link>
             </div>
           </section>

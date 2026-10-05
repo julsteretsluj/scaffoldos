@@ -1,6 +1,6 @@
 # Branding usage map
 
-Course OS uses **two brand layers**. Do not mix them.
+Scaffold OS uses **two brand layers**. Do not mix them.
 
 ## System — Scaffold Operating System
 

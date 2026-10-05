@@ -36,7 +36,7 @@ export function Header({ variant = "system", className }: HeaderProps) {
               priority
             />
             <p className="mt-2 font-serif text-2xl font-black tracking-tight text-[var(--ink)] sm:text-3xl">
-              {isSystem ? "Course OS" : "The Learner"}
+              {isSystem ? "Scaffold OS" : "The Learner"}
             </p>
           </Link>
 

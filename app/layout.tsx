@@ -23,11 +23,11 @@ const uiMono = Source_Code_Pro({
 
 export const metadata: Metadata = {
   title: {
-    default: "Course OS · Scaffold Operating System",
-    template: "%s · Course OS",
+    default: "Scaffold OS · Scaffold Operating System",
+    template: "%s · Scaffold OS",
   },
   description:
-    "Zero-data Course OS — build, configure, and publish courses from an empty catalog.",
+    "Zero-data Scaffold OS — build, configure, and publish courses from an empty catalog.",
   icons: {
     icon: BRAND.system.favicon,
   },

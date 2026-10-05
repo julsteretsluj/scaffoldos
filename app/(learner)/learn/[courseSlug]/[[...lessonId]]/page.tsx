@@ -54,8 +54,8 @@ export default async function LearnerPage({ params }: Props) {
             brandSrc={BRAND.school.lockupLight}
             brandAlt={BRAND.school.name}
             title="Course unavailable"
-            description="This course is not published yet, or the catalog is empty. Authors publish from Course OS settings."
-            actionLabel="Open Course OS"
+            description="This course is not published yet, or the catalog is empty. Authors publish from Scaffold OS settings."
+            actionLabel="Open Scaffold OS"
             actionHref="/courses"
           />
         </div>

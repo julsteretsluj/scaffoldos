@@ -33,7 +33,15 @@ export async function POST(request: Request) {
       );
     }
 
-    const { title, description } = parsed.data;
+    const {
+      title,
+      description,
+      gradeBand,
+      gradeLevel,
+      subjectCode,
+      syllabusUrl,
+      udlFrameworkData,
+    } = parsed.data;
     let slug = slugifyTitle(title);
     const existing = await db.course.findUnique({ where: { slug } });
     if (existing) {
@@ -45,6 +53,11 @@ export async function POST(request: Request) {
         title,
         slug,
         description: description ?? null,
+        gradeBand: gradeBand || null,
+        gradeLevel: gradeLevel || null,
+        subjectCode: subjectCode || null,
+        syllabusUrl: syllabusUrl || null,
+        udlFrameworkData: udlFrameworkData || null,
         status: "DRAFT",
       },
     });

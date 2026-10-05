@@ -1,4 +1,4 @@
-# Course OS (Scaffold Operating System)
+# Scaffold OS (Scaffold Operating System)
 
 Zero-data LMS / course engine. No mock courses or seed content — empty states first.
 
@@ -36,9 +36,14 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Key routes
 
-- `/` — Product landing (system brand)
+- `/` — Product landing (Scaffold OS brand)
+- `/portal` — Role portal picker (student / teacher / admin / leadership / parent / tutor)
+- `/portal/[role]` — Role dashboard + module shortcuts
+- `/school` — School desk (tenant LMS modules)
 - `/courses` — Author catalog (empty state if none)
 - `/courses/new` — Create course
 - `/courses/[id]/edit` — Outline builder
 - `/courses/[id]/settings` — Metadata + publish lifecycle
 - `/learn/[slug]` — Learner player (school brand)
+
+See `docs/FEATURE_CHECKLIST.md` for PDF + LMS coverage.
