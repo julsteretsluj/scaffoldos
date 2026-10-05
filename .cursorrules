@@ -1,0 +1,9 @@
+# Course OS — Cursor rules
+
+- Zero-data architecture: never add mock courses, hardcoded lesson arrays, or seed catalogs.
+- Empty states first: every list/view must handle count === 0 with actionable EmptyState UX.
+- Course lifecycle: DRAFT → PUBLISHED → ARCHIVED via publish API.
+- Two brand layers: Scaffold Operating System (product) vs Scaffold International School (tenant/learner). See docs/BRANDING.md.
+- Prefer Server Components; use client components only for forms, builder interactivity, and Zustand UI state.
+- Validate all mutations with Zod schemas in lib/validators/course.ts.
+- Seamun/Apple HIG tokens: grouped gray #F2F2F7, white surfaces, ink #1D1D1F, accent #007AFF.
