@@ -3,21 +3,24 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[980px] text-sm font-medium transition-colors duration-200 disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#007AFF]/40",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap border text-sm font-semibold uppercase tracking-[0.08em] transition-colors duration-150 disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--ink)]",
   {
     variants: {
       variant: {
-        default: "bg-[#007AFF] text-white hover:bg-[#0077ED]",
+        default:
+          "border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] hover:bg-[var(--accent-hover)]",
         secondary:
-          "bg-white text-[#1D1D1F] border border-[#D1D1D6] hover:bg-[#F2F2F7]",
-        ghost: "text-[#007AFF] hover:bg-[#007AFF]/10",
-        danger: "bg-[#FF3B30] text-white hover:bg-[#E0342B]",
+          "border-[var(--rule)] bg-transparent text-[var(--ink)] hover:bg-black/[0.04]",
+        ghost:
+          "border-transparent bg-transparent text-[var(--ink)] hover:underline underline-offset-4",
+        danger:
+          "border-[var(--danger)] bg-[var(--danger)] text-[var(--paper)] hover:bg-[#6e1515]",
       },
       size: {
-        default: "h-10 px-5 py-2",
+        default: "h-9 px-4 py-2",
         sm: "h-8 px-3 text-xs",
-        lg: "h-12 px-6 text-base",
-        icon: "h-10 w-10",
+        lg: "h-11 px-6 text-sm",
+        icon: "h-9 w-9",
       },
     },
     defaultVariants: {

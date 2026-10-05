@@ -11,32 +11,29 @@ interface LearnerHeaderProps {
 /** Tenant/school chrome for published learner experience */
 export function LearnerHeader({ courseTitle, className }: LearnerHeaderProps) {
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-40 border-b border-white/10 bg-[#0A1628]",
-        className,
-      )}
-    >
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <div className="flex min-w-0 items-center gap-3">
+    <header className={cn("bg-[var(--paper)]", className)}>
+      <div className="mx-auto max-w-5xl px-4 pt-3 sm:px-6">
+        <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2 text-[0.65rem] uppercase tracking-[0.12em] text-[var(--ink-secondary)]">
+          <span>{BRAND.school.name}</span>
+          <Link href="/courses" className="hover:text-[var(--ink)] hover:underline">
+            Powered by {BRAND.system.shortName}
+          </Link>
+        </div>
+        <div className="rule-double flex items-center gap-4 py-3">
           <Image
-            src={BRAND.school.mark}
+            src={BRAND.school.lockupLight}
             alt={BRAND.school.name}
-            width={32}
-            height={32}
-            className="h-8 w-8 object-contain"
+            width={120}
+            height={40}
+            className="h-10 w-auto object-contain"
           />
-          <div className="min-w-0">
-            <p className="truncate text-sm font-medium text-white">{courseTitle}</p>
-            <p className="truncate text-xs text-[#7DD3FC]">{BRAND.school.name}</p>
+          <div className="min-w-0 border-l border-[var(--rule)] pl-4">
+            <p className="kicker">Learner edition</p>
+            <p className="truncate font-serif text-lg font-bold text-[var(--ink)] sm:text-xl">
+              {courseTitle}
+            </p>
           </div>
         </div>
-        <Link
-          href="/courses"
-          className="shrink-0 text-xs text-white/60 transition-colors hover:text-white"
-        >
-          Powered by {BRAND.system.shortName}
-        </Link>
       </div>
     </header>
   );

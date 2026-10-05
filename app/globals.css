@@ -1,28 +1,74 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f2f2f7;
-  --foreground: #1d1d1f;
-  --surface: #ffffff;
-  --ink: #1d1d1f;
-  --ink-secondary: #6e6e73;
-  --ink-tertiary: #aeaeb2;
-  --accent: #007aff;
-  --accent-hover: #0077ed;
-  --border: #d1d1d6;
+  --paper: #f5f2e9;
+  --paper-elevated: #faf8f2;
+  --ink: #121212;
+  --ink-secondary: #4a4a4a;
+  --ink-muted: #7a7a7a;
+  --rule: #1a1a1a;
+  --rule-soft: rgba(26, 26, 26, 0.22);
+  --accent: #1a1a1a;
+  --accent-hover: #333333;
+  --danger: #8b1a1a;
   --navy: #0a1628;
+  --background: var(--paper);
+  --foreground: var(--ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --font-sans: var(--font-ui-sans);
+  --font-serif: var(--font-display-serif);
+  --font-mono: var(--font-ui-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont,
-    "SF Pro Text", "Inter", system-ui, sans-serif;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(rgba(26, 26, 26, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26, 26, 26, 0.012) 1px, transparent 1px);
+  background-size: 100% 28px, 28px 100%;
+  color: var(--ink);
+  font-family: var(--font-ui-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.font-serif {
+  font-family: var(--font-display-serif), "Times New Roman", Times, serif;
+}
+
+.hairline {
+  border-color: var(--rule-soft);
+}
+
+.rule-top {
+  border-top: 1px solid var(--rule);
+}
+
+.rule-bottom {
+  border-bottom: 1px solid var(--rule);
+}
+
+.rule-double {
+  border-top: 3px double var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.kicker {
+  font-family: var(--font-ui-sans), sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+}
+
+.byline {
+  font-family: var(--font-ui-sans), sans-serif;
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.02em;
 }

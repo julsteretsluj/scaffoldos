@@ -160,30 +160,28 @@ export function CourseBuilder({ courseId, initialCourse }: CourseBuilderProps) {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-wrap items-start justify-between gap-4">
+      <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[var(--rule)] pb-4">
         <div>
-          <p className="text-xs font-medium uppercase tracking-wide text-[#AEAEB2]">
-            {course.status} · Outline builder
+          <p className="kicker">
+            {course.status} · Outline desk
           </p>
-          <h1 className="mt-1 text-2xl font-semibold tracking-tight text-[#1D1D1F]">
+          <h1 className="mt-1 font-serif text-3xl font-black tracking-tight text-[var(--ink)]">
             {course.title}
           </h1>
         </div>
-        <div className="flex gap-2">
-          <Link href={`/courses/${courseId}/settings`}>
-            <Button variant="secondary" type="button">
-              <Settings className="h-4 w-4" />
-              Settings
-            </Button>
-          </Link>
-        </div>
+        <Link href={`/courses/${courseId}/settings`}>
+          <Button variant="secondary" type="button">
+            <Settings className="h-4 w-4" />
+            Settings
+          </Button>
+        </Link>
       </div>
 
-      {error ? <p className="text-sm text-[#FF3B30]">{error}</p> : null}
+      {error ? <p className="text-sm text-[var(--danger)]">{error}</p> : null}
 
-      <div className="flex flex-wrap gap-2 rounded-[16px] border border-[#D1D1D6] bg-white p-4">
+      <div className="flex flex-wrap gap-2 border border-[var(--rule)] bg-[var(--paper-elevated)] p-4">
         <Input
-          placeholder="New module title"
+          placeholder="New section headline"
           value={newModuleTitle}
           onChange={(e) => setNewModuleTitle(e.target.value)}
           className="max-w-sm"
@@ -207,14 +205,11 @@ export function CourseBuilder({ courseId, initialCourse }: CourseBuilderProps) {
           description="Add your first module to start structuring this course."
         />
       ) : (
-        <ul className="space-y-4">
+        <ul className="divide-y divide-[var(--rule-soft)] border border-[var(--rule)] bg-[var(--paper-elevated)]">
           {modules.map((mod, modIndex) => (
-            <li
-              key={mod.id}
-              className="rounded-[16px] border border-[#D1D1D6] bg-white p-5 shadow-[0_2px_8px_rgba(0,0,0,0.06)]"
-            >
+            <li key={mod.id} className="p-5">
               <div className="flex items-center justify-between gap-3">
-                <h2 className="text-base font-semibold text-[#1D1D1F]">
+                <h2 className="font-serif text-xl font-bold text-[var(--ink)]">
                   {modIndex + 1}. {mod.title}
                 </h2>
                 <div className="flex items-center gap-1">
@@ -243,28 +238,28 @@ export function CourseBuilder({ courseId, initialCourse }: CourseBuilderProps) {
                     onClick={() => void deleteModule(mod.id)}
                     aria-label="Delete module"
                   >
-                    <Trash2 className="h-4 w-4 text-[#FF3B30]" />
+                    <Trash2 className="h-4 w-4 text-[var(--danger)]" />
                   </Button>
                 </div>
               </div>
 
               {mod.lessons.length === 0 ? (
-                <p className="mt-4 rounded-[12px] bg-[#F2F2F7] px-4 py-3 text-sm text-[#6E6E73]">
+                <p className="mt-4 border border-dashed border-[var(--rule-soft)] px-4 py-3 text-sm italic text-[var(--ink-secondary)]">
                   This module has no lessons yet. Click &apos;Add Lesson&apos; to
                   begin.
                 </p>
               ) : (
-                <ul className="mt-4 space-y-2">
+                <ul className="mt-4 divide-y divide-[var(--rule-soft)] border-t border-[var(--rule-soft)]">
                   {mod.lessons.map((lesson, lessonIndex) => (
                     <li
                       key={lesson.id}
-                      className="flex items-center justify-between rounded-[12px] border border-[#D1D1D6]/80 px-3 py-2"
+                      className="flex items-center justify-between py-2.5"
                     >
                       <div>
-                        <p className="text-sm font-medium text-[#1D1D1F]">
+                        <p className="text-sm font-semibold text-[var(--ink)]">
                           {lesson.title}
                         </p>
-                        <p className="text-xs text-[#AEAEB2]">{lesson.type}</p>
+                        <p className="byline">{lesson.type}</p>
                       </div>
                       <div className="flex items-center gap-1">
                         <Button
@@ -293,7 +288,7 @@ export function CourseBuilder({ courseId, initialCourse }: CourseBuilderProps) {
                           size="icon"
                           onClick={() => void deleteLesson(lesson.id)}
                         >
-                          <Trash2 className="h-4 w-4 text-[#FF3B30]" />
+                          <Trash2 className="h-4 w-4 text-[var(--danger)]" />
                         </Button>
                       </div>
                     </li>

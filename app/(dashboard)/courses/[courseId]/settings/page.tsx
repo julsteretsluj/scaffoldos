@@ -68,7 +68,9 @@ export default function CourseSettingsPage() {
     const data = await res.json().catch(() => ({}));
     setBusy(false);
     if (!res.ok) {
-      setError(typeof data.error === "string" ? data.error : "Status update failed.");
+      setError(
+        typeof data.error === "string" ? data.error : "Status update failed.",
+      );
       return;
     }
     setCourse(data);
@@ -76,15 +78,18 @@ export default function CourseSettingsPage() {
   }
 
   if (!course) {
-    return <p className="text-sm text-[#6E6E73]">Loading settings…</p>;
+    return <p className="byline">Loading settings…</p>;
   }
 
   return (
     <div className="mx-auto max-w-xl space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold tracking-tight text-[#1D1D1F]">
-          Course settings
-        </h1>
+      <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[var(--rule)] pb-4">
+        <div>
+          <p className="kicker">Colophon</p>
+          <h1 className="mt-1 font-serif text-3xl font-black tracking-tight text-[var(--ink)]">
+            Course settings
+          </h1>
+        </div>
         <Link href={`/courses/${courseId}/edit`}>
           <Button variant="secondary" type="button">
             Back to builder
@@ -99,7 +104,7 @@ export default function CourseSettingsPage() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="title">Title</Label>
+            <Label htmlFor="title">Headline</Label>
             <Input
               id="title"
               value={title}
@@ -107,18 +112,18 @@ export default function CourseSettingsPage() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">Deck</Label>
             <Textarea
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <p className="text-xs text-[#6E6E73]">
+          <p className="byline">
             Current status:{" "}
-            <span className="font-medium text-[#1D1D1F]">{course.status}</span>
+            <span className="font-semibold text-[var(--ink)]">{course.status}</span>
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 border-t border-[var(--rule-soft)] pt-4">
             <Button type="button" onClick={() => void saveMetadata()} disabled={busy}>
               Save metadata
             </Button>
@@ -147,13 +152,15 @@ export default function CourseSettingsPage() {
               Archive
             </Button>
           </div>
-          {message ? <p className="text-sm text-[#34C759]">{message}</p> : null}
-          {error ? <p className="text-sm text-[#FF3B30]">{error}</p> : null}
+          {message ? (
+            <p className="text-sm font-medium text-[var(--ink)]">{message}</p>
+          ) : null}
+          {error ? <p className="text-sm text-[var(--danger)]">{error}</p> : null}
           {course.status === "PUBLISHED" ? (
-            <p className="text-sm text-[#6E6E73]">
-              Learner link:{" "}
+            <p className="byline">
+              Learner edition:{" "}
               <Link
-                className="text-[#007AFF] hover:underline"
+                className="font-semibold text-[var(--ink)] underline underline-offset-2"
                 href={`/learn/${course.slug}`}
               >
                 /learn/{course.slug}

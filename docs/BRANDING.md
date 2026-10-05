@@ -8,8 +8,8 @@ Product / LMS identity.
 
 | File | Role |
 |------|------|
-| `public/brand/logo-scaffold-os.png` | Full lockup (shield + SCAFFOLD + OPERATING SYSTEM) on light surfaces |
-| `public/favicon.png` | Browser / app identity (same system mark) |
+| `public/brand/logo-scaffold-os.png` | Full lockup (shield + SCAFFOLD + OPERATING SYSTEM); **transparent** PNG |
+| `public/favicon.png` | Browser / app identity (same system mark; transparent) |
 
 **Use for:** app header/nav, root landing, product empty states, favicon, auth/splash.
 

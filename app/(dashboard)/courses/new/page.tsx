@@ -52,39 +52,42 @@ export default function NewCoursePage() {
 
   return (
     <div className="mx-auto max-w-xl">
+      <p className="kicker mb-2">Dispatch · New filing</p>
       <Card>
         <CardHeader>
           <CardTitle>Create a course</CardTitle>
           <CardDescription>
-            Start with a title. You can add modules and lessons next — nothing is
-            pre-seeded.
+            File a title for the masthead. Modules and lessons come next — nothing
+            is pre-seeded.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
             <div className="space-y-2">
-              <Label htmlFor="title">Title</Label>
+              <Label htmlFor="title">Headline</Label>
               <Input
                 id="title"
                 placeholder="e.g. Introduction to Design Systems"
                 {...register("title")}
               />
               {errors.title ? (
-                <p className="text-xs text-[#FF3B30]">{errors.title.message}</p>
+                <p className="text-xs text-[var(--danger)]">{errors.title.message}</p>
               ) : null}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="description">Description (optional)</Label>
+              <Label htmlFor="description">Deck (optional)</Label>
               <Textarea
                 id="description"
                 placeholder="What will learners achieve?"
                 {...register("description")}
               />
             </div>
-            {error ? <p className="text-sm text-[#FF3B30]">{error}</p> : null}
-            <div className="flex gap-3">
+            {error ? (
+              <p className="text-sm text-[var(--danger)]">{error}</p>
+            ) : null}
+            <div className="flex flex-wrap gap-3 border-t border-[var(--rule-soft)] pt-4">
               <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Creating…" : "Create & open builder"}
+                {isSubmitting ? "Filing…" : "File & open builder"}
               </Button>
               <Button
                 type="button"

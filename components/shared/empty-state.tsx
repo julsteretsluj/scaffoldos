@@ -29,35 +29,36 @@ export function EmptyState({
   return (
     <div
       className={cn(
-        "flex flex-col items-center justify-center rounded-[20px] border border-dashed border-[#D1D1D6] bg-white px-8 py-16 text-center",
+        "border border-[var(--rule)] bg-[var(--paper-elevated)] px-6 py-12 text-center sm:px-10",
         className,
       )}
     >
-      {brandSrc ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={brandSrc}
-          alt={brandAlt ?? "Brand"}
-          className="mb-6 h-16 w-auto object-contain opacity-90"
-        />
-      ) : (
-        <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-[16px] bg-[#F2F2F7]">
-          <Icon className="h-7 w-7 text-[#007AFF]" strokeWidth={1.75} />
-        </div>
-      )}
-      <h2 className="text-xl font-semibold tracking-tight text-[#1D1D1F]">
+      <div className="mx-auto mb-5 flex max-w-md flex-col items-center border-b border-[var(--rule-soft)] pb-5">
+        {brandSrc ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={brandSrc}
+            alt={brandAlt ?? "Brand"}
+            className="mb-4 h-14 w-auto object-contain"
+          />
+        ) : (
+          <Icon className="mb-3 h-6 w-6 text-[var(--ink)]" strokeWidth={1.5} />
+        )}
+        <p className="kicker">Notice · Edition incomplete</p>
+      </div>
+      <h2 className="font-serif text-2xl font-bold tracking-tight text-[var(--ink)] sm:text-3xl">
         {title}
       </h2>
-      <p className="mt-2 max-w-md text-sm leading-relaxed text-[#6E6E73]">
+      <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-[var(--ink-secondary)] sm:text-[0.95rem]">
         {description}
       </p>
       {actionLabel && actionHref ? (
-        <Link href={actionHref} className="mt-6 inline-flex">
+        <Link href={actionHref} className="mt-7 inline-flex">
           <Button type="button">{actionLabel}</Button>
         </Link>
       ) : null}
       {actionLabel && onAction && !actionHref ? (
-        <div className="mt-6">
+        <div className="mt-7">
           <Button type="button" onClick={onAction}>
             {actionLabel}
           </Button>

@@ -6,9 +6,9 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-[#F2F2F7]">
+    <div className="min-h-screen bg-[var(--paper)]">
       <Header variant="system" />
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">{children}</main>
+      <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">{children}</main>
     </div>
   );
 }

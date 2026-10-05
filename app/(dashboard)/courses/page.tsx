@@ -1,14 +1,23 @@
 import Link from "next/link";
 import { BookOpen, FolderPlus } from "lucide-react";
 import { EmptyState } from "@/components/shared/empty-state";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BRAND } from "@/lib/brand";
 import { db } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
+type CourseRow = {
+  id: string;
+  title: string;
+  slug: string;
+  description: string | null;
+  status: string;
+  updatedAt: Date;
+  _count?: { modules: number };
+};
+
 export default async function CoursesPage() {
-  let courses: Awaited<ReturnType<typeof db.course.findMany>> = [];
+  let courses: CourseRow[] = [];
   let dbError = false;
 
   try {
@@ -27,25 +36,37 @@ export default async function CoursesPage() {
         icon={BookOpen}
         brandSrc={BRAND.system.lockup}
         brandAlt={BRAND.system.name}
-        title="Database not connected"
-        description="Set DATABASE_URL in .env, run prisma migrate, then create your first course. The UI is ready — zero mock data."
-        actionLabel="Create Course"
+        title="Press room offline"
+        description="Set DATABASE_URL in .env, run prisma db push, then file your first course. The desk is ready — zero mock data."
+        actionLabel="Compose Course"
         actionHref="/courses/new"
       />
     );
   }
 
-  if (courses.length === 0) {
-    return (
-      <div className="space-y-6">
+  return (
+    <div>
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-4 border-b border-[var(--rule)] pb-4">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-[#1D1D1F]">
+          <p className="kicker">Catalog</p>
+          <h1 className="mt-1 font-serif text-3xl font-black tracking-tight text-[var(--ink)]">
             Courses
           </h1>
-          <p className="mt-1 text-sm text-[#6E6E73]">
-            Build and publish courses from an empty catalog.
+          <p className="byline mt-1">
+            {courses.length === 0
+              ? "No editions on file."
+              : `${courses.length} course${courses.length === 1 ? "" : "s"} on the ledger.`}
           </p>
         </div>
+        <Link
+          href="/courses/new"
+          className="inline-flex h-9 items-center border border-[var(--ink)] bg-[var(--ink)] px-4 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--paper)] hover:bg-[var(--accent-hover)]"
+        >
+          New Course
+        </Link>
+      </div>
+
+      {courses.length === 0 ? (
         <EmptyState
           icon={FolderPlus}
           brandSrc={BRAND.system.lockup}
@@ -55,48 +76,41 @@ export default async function CoursesPage() {
           actionLabel="Create Course"
           actionHref="/courses/new"
         />
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-6">
-      <div className="flex items-end justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-[#1D1D1F]">
-            Courses
-          </h1>
-          <p className="mt-1 text-sm text-[#6E6E73]">
-            {courses.length} course{courses.length === 1 ? "" : "s"} in your catalog.
-          </p>
-        </div>
-        <Link
-          href="/courses/new"
-          className="inline-flex h-10 items-center rounded-[980px] bg-[#007AFF] px-5 text-sm font-medium text-white hover:bg-[#0077ED]"
-        >
-          Create Course
-        </Link>
-      </div>
-
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {courses.map((course) => (
-          <Link key={course.id} href={`/courses/${course.id}/edit`}>
-            <Card className="h-full transition-shadow hover:shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
-              <CardHeader>
-                <div className="mb-2 inline-flex w-fit rounded-[980px] bg-[#F2F2F7] px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-[#6E6E73]">
-                  {course.status}
+      ) : (
+        <ul className="divide-y divide-[var(--rule-soft)] border border-[var(--rule)] bg-[var(--paper-elevated)]">
+          {courses.map((course, index) => (
+            <li key={course.id}>
+              <Link
+                href={`/courses/${course.id}/edit`}
+                className="block px-4 py-5 transition-colors hover:bg-black/[0.03] sm:px-5"
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <p className="byline">
+                    {String(index + 1).padStart(2, "0")} · {course.status}
+                    {course._count
+                      ? ` · ${course._count.modules} module${course._count.modules === 1 ? "" : "s"}`
+                      : null}
+                  </p>
+                  <p className="byline">
+                    Updated{" "}
+                    {new Intl.DateTimeFormat("en-GB", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    }).format(new Date(course.updatedAt))}
+                  </p>
                 </div>
-                <CardTitle className="line-clamp-2">{course.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="line-clamp-2 text-sm text-[#6E6E73]">
-                  {course.description || "No description yet."}
+                <h2 className="mt-1 font-serif text-2xl font-bold leading-snug text-[var(--ink)]">
+                  {course.title}
+                </h2>
+                <p className="mt-2 line-clamp-2 max-w-3xl text-sm leading-relaxed text-[var(--ink-secondary)]">
+                  {course.description || "No description filed."}
                 </p>
-              </CardContent>
-            </Card>
-          </Link>
-        ))}
-      </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
