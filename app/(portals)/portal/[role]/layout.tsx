@@ -1,13 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BRAND } from "@/lib/brand";
-import { portalBySlug, PORTAL_ROLES } from "@/lib/portals/roles";
+import { portalBySlug } from "@/lib/portals/roles";
 
 type Props = { params: Promise<{ role: string }> };
-
-export function generateStaticParams() {
-  return PORTAL_ROLES.map((p) => ({ role: p.slug }));
-}
 
 export default async function PortalRoleLayout({
   children,

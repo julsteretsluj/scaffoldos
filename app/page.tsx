@@ -15,21 +15,22 @@ export default function HomePage() {
       <div className="mx-auto max-w-5xl px-4 py-6 sm:px-6 sm:py-10">
         <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2 text-[0.65rem] uppercase tracking-[0.14em] text-[var(--ink-secondary)]">
           <span>{today}</span>
-          <span>{BRAND.system.name}</span>
+          <span>Scaffold Operating System</span>
           <span>Zero Data · No. 1</span>
         </div>
 
         <header className="rule-double py-6 text-center">
           <Image
             src={BRAND.system.lockup}
-            alt={BRAND.system.name}
+            alt="Scaffold Operating System"
             width={180}
             height={56}
             className="mx-auto h-14 w-auto object-contain"
             priority
           />
+          {/* Product masthead — hardcoded so deploy never shows a wrong brand token */}
           <h1 className="mt-4 font-serif text-5xl font-black tracking-tight text-[var(--ink)] sm:text-6xl md:text-7xl">
-            {BRAND.system.shortName}
+            Scaffold OS
           </h1>
           <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-secondary)]">
             The modular learning gazette
@@ -43,7 +44,7 @@ export default function HomePage() {
               An empty catalog awaits its first edition
             </h2>
             <p className="mt-4 text-[0.95rem] leading-relaxed text-[var(--ink-secondary)]">
-              {BRAND.system.name} starts with no mock courses and no seed
+              Scaffold Operating System starts with no mock courses and no seed
               lessons. Authors compose modules, set draft-to-publish status, and
               release courses when ready — nothing is pre-written.
             </p>
@@ -109,7 +110,7 @@ export default function HomePage() {
               <p className="byline">
                 Tenant edition:{" "}
                 <span className="font-medium text-[var(--ink)]">
-                  {BRAND.school.name}
+                  Scaffold International School
                 </span>
               </p>
             </div>
@@ -117,8 +118,7 @@ export default function HomePage() {
         </div>
 
         <footer className="mt-6 border-t border-[var(--rule)] pt-3 text-center text-[0.65rem] uppercase tracking-[0.14em] text-[var(--ink-muted)]">
-          All the courses that are fit to teach · Zero mock data ·{" "}
-          {BRAND.system.shortName}
+          All the courses that are fit to teach · Zero mock data · Scaffold OS
         </footer>
       </div>
     </div>

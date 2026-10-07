@@ -21,9 +21,9 @@
   --color-foreground: var(--foreground);
   --color-paper: var(--paper);
   --color-ink: var(--ink);
-  --font-sans: var(--font-ui-sans);
-  --font-serif: var(--font-display-serif);
-  --font-mono: var(--font-ui-mono);
+  --font-sans: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: Merriweather, "Times New Roman", Times, serif;
+  --font-mono: "Source Code Pro", ui-monospace, monospace;
 }
 
 body {
@@ -33,11 +33,11 @@ body {
     linear-gradient(90deg, rgba(26, 26, 26, 0.012) 1px, transparent 1px);
   background-size: 100% 28px, 28px 100%;
   color: var(--ink);
-  font-family: var(--font-ui-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--font-sans);
 }
 
 .font-serif {
-  font-family: var(--font-display-serif), "Times New Roman", Times, serif;
+  font-family: var(--font-serif);
 }
 
 .hairline {
@@ -58,7 +58,7 @@ body {
 }
 
 .kicker {
-  font-family: var(--font-ui-sans), sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -67,7 +67,7 @@ body {
 }
 
 .byline {
-  font-family: var(--font-ui-sans), sans-serif;
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   color: var(--ink-muted);
   letter-spacing: 0.02em;

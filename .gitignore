@@ -32,10 +32,9 @@ yarn-error.log*
 
 # env files — keep .env.example; never commit secrets
 .env
+.env.*
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*.local
 !.env.example
 
 # vercel

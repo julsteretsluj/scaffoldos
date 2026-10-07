@@ -1,5 +1,8 @@
 import { Header } from "@/components/shared/header";
 
+/** Authoring routes query Prisma — skip static prerender when DATABASE_URL is absent. */
+export const dynamic = "force-dynamic";
+
 export default function DashboardLayout({
   children,
 }: {

@@ -1,5 +1,8 @@
 import { SchoolShell } from "@/components/shared/school-shell";
 
+/** School modules are client/API-driven or DB-backed — never prerender against missing DATABASE_URL. */
+export const dynamic = "force-dynamic";
+
 export default function SchoolLayout({
   children,
 }: {

@@ -6,7 +6,7 @@
 export const BRAND = {
   system: {
     name: "Scaffold Operating System",
-    shortName: "Scaffold OS",
+    shortName: "Scaffold OS" as const,
     lockup: "/brand/logo-scaffold-os.png",
     favicon: "/favicon.png",
   },
