@@ -15,7 +15,7 @@ export default function HomePage() {
       <div className="mx-auto max-w-5xl px-4 py-6 sm:px-6 sm:py-10">
         <div className="flex items-center justify-between border-b border-[var(--rule)] pb-2 text-[0.65rem] uppercase tracking-[0.14em] text-[var(--ink-secondary)]">
           <span>{today}</span>
-          <span>Scaffold Operating System</span>
+          <span>{BRAND.system.name}</span>
           <span>Zero Data · No. 1</span>
         </div>
 
@@ -29,7 +29,7 @@ export default function HomePage() {
             priority
           />
           <h1 className="mt-4 font-serif text-5xl font-black tracking-tight text-[var(--ink)] sm:text-6xl md:text-7xl">
-            Scaffold OS
+            {BRAND.system.shortName}
           </h1>
           <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--ink-secondary)]">
             The modular learning gazette
@@ -43,7 +43,7 @@ export default function HomePage() {
               An empty catalog awaits its first edition
             </h2>
             <p className="mt-4 text-[0.95rem] leading-relaxed text-[var(--ink-secondary)]">
-              Scaffold Operating System starts with no mock courses and no seed
+              {BRAND.system.name} starts with no mock courses and no seed
               lessons. Authors compose modules, set draft-to-publish status, and
               release courses when ready — nothing is pre-written.
             </p>
@@ -55,16 +55,16 @@ export default function HomePage() {
                 Compose a course
               </Link>
               <Link
+                href="/courses"
+                className="inline-flex h-9 items-center border border-[var(--ink)] px-4 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--ink)] hover:bg-black/[0.04]"
+              >
+                Open the catalog
+              </Link>
+              <Link
                 href="/portal"
                 className="inline-flex h-9 items-center border border-[var(--ink)] px-4 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--ink)] hover:bg-black/[0.04]"
               >
                 Open role portals
-              </Link>
-              <Link
-                href="/school"
-                className="inline-flex h-9 items-center border border-[var(--ink)] px-4 text-xs font-semibold uppercase tracking-[0.1em] text-[var(--ink)] hover:bg-black/[0.04]"
-              >
-                School desk
               </Link>
             </div>
           </section>
@@ -81,9 +81,19 @@ export default function HomePage() {
                   <span className="font-semibold text-[var(--ink)]">Draft → Published → Archived.</span>{" "}
                   Lifecycle printed into the schema.
                 </li>
+                <li className="border-b border-[var(--rule-soft)] pb-3">
+                  <span className="font-semibold text-[var(--ink)]">Six role portals.</span>{" "}
+                  Student, teacher, admin, senior leadership, parents, and
+                  tutor/1:1 — each with its own desk.
+                </li>
                 <li>
-                  <span className="font-semibold text-[var(--ink)]">Two mastheads.</span>{" "}
-                  Product OS for authors; school mark for learners.
+                  <Link
+                    href="/portal"
+                    className="font-semibold text-[var(--ink)] underline underline-offset-2 hover:opacity-80"
+                  >
+                    Enter the portals →
+                  </Link>{" "}
+                  Create a profile, then open the desk that matches your role.
                 </li>
               </ul>
             </div>
@@ -107,7 +117,8 @@ export default function HomePage() {
         </div>
 
         <footer className="mt-6 border-t border-[var(--rule)] pt-3 text-center text-[0.65rem] uppercase tracking-[0.14em] text-[var(--ink-muted)]">
-          All the courses that are fit to teach · Zero mock data
+          All the courses that are fit to teach · Zero mock data ·{" "}
+          {BRAND.system.shortName}
         </footer>
       </div>
     </div>

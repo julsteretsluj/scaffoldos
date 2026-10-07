@@ -22,7 +22,9 @@ export function Header({ variant = "system", className }: HeaderProps) {
       <div className="mx-auto max-w-5xl px-4 pt-4 sm:px-6">
         <div className="flex items-center justify-between gap-4 border-b border-[var(--rule)] pb-2 text-[0.65rem] uppercase tracking-[0.12em] text-[var(--ink-secondary)]">
           <span>{today}</span>
-          <span>{isSystem ? "Vol. I · Course Edition" : BRAND.school.name}</span>
+          <span>
+            {isSystem ? `Vol. I · ${BRAND.system.shortName}` : BRAND.school.name}
+          </span>
         </div>
 
         <div className="rule-double flex flex-col items-center gap-3 py-4 sm:flex-row sm:items-end sm:justify-between">
